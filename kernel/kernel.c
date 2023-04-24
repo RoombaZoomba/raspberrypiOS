@@ -3,20 +3,19 @@
 #include "ouruart.h"
 #include "ourstdio.h"
 #include "ourstdlib.h"
+#include "spinlock.h"
 
-void kernel_main(uint32_t r0, uint32_t r1, uint32_t atags)
+//uart_init();
+//uint32_t r0, uint32_t r1, uint32_t atags
+//    (void) r0;
+//    (void) r1;
+//    (void) atags;
+//char buf[256];
+void kernel_main()
 {
-    char buf[256];
-    // Declare as unused
-    (void) r0;
-    (void) r1;
-    (void) atags;
 
-    uart_init();
-    puts("Hello, kernel World!\n");
-    while (1) {
-        gets(buf,256);
-        puts(buf);
-        putc('\n');
-    }
+    //spinlock_t my_spinlock;
+    //spinlock_lock(&my_spinlock);
+    puts("Hello, World!\n\0");
+    //spinlock_unlock(&my_spinlock);
 }

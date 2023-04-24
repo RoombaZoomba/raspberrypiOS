@@ -1,3 +1,5 @@
+// this is just from OSDev with some added comments from us on what it's doing
+
 // To keep this in the first portion of the binary.
 .section ".text.boot"
 

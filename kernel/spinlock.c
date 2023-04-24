@@ -1,6 +1,10 @@
 #include <stdatomic.h>
 #include "spinlock.h"
 
+/*
+    We are using gcc's atomic operations
+    to implement our spinlock
+*/
 
 void spinlock_init(spinlock_t *lock) {
     atomic_flag_clear(&lock->flag);
@@ -13,12 +17,3 @@ void spinlock_lock(spinlock_t *lock) {
 void spinlock_unlock(spinlock_t *lock) {
     atomic_flag_clear(&lock->flag);
 }
-
-
-
-
-
-
-
-
-

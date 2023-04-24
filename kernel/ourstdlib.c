@@ -1,52 +1,63 @@
 #include "ourstdlib.h"
 
-void memcpy(void * dest, void * src, int bytes) {
-    char * d = dest, * s = src;
-    while (bytes--) {
-        *d++ = *s++;
+// memcpy but not c standard library's memcpy
+void memcpy(void *dest, void *src, int bytes) {
+    char *d = dest;
+    char *s = src;
+    while (bytes) {
+        *d = *s;
+        *d++;
+        *s++;
+        bytes--;
     }
 }
 
-void bzero(void * dest, int bytes) {
-    char * d = dest;
+void bzero(void *dest, int bytes) {
+    char *d = dest;
     while (bytes--) {
-        *d++ = 0;
+        *d = 0;
+        *d++;
+        bytes--;
     }
 }
 
-char * itoa(int i) {
-    static char intbuf[12];
-    int j = 0, isneg = 0;
+// converts int to a string
+// pretty much from geeksforgeeks article and adapted to C
+char *itoa(int i) {
+    static char buf[12];
+    int j = 0;
+    int is_neg = 0; // treat as bool
 
     if (i == 0) {
-        intbuf[0] = '0';
-        intbuf[1] = '\0';
-        return intbuf;
+        buf[0] = '0';
+        buf[1] = '\0';
+        return buf;
     }
 
     if (i < 0) {
-        isneg = 1;
+        is_neg = 1;
         i = -i;
     }
 
     while (i != 0) {
-       intbuf[j++] = '0' + (i % 10); 
-       i /= 10;
+       buf[j++] = '0' + (i % 10); 
+       i = i / 10;
     }
 
-    if (isneg)
-        intbuf[j++] = '-';
+    if (is_neg)
+        buf[j++] = '-';
 
-    intbuf[j] = '\0';
+    buf[j] = '\0';
     j--;
+    
     i = 0;
     while (i < j) {
-        isneg = intbuf[i];
-        intbuf[i] = intbuf[j];
-        intbuf[j] = isneg;
+        is_neg = buf[i];
+        buf[i] = buf[j];
+        buf[j] = is_neg;
         i++;
         j--;
     }
 
-    return intbuf;
+    return buf;
 }

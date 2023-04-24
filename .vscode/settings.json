@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "__node_handle": "c",
+        "optional": "c",
+        "system_error": "c"
+    }
+}

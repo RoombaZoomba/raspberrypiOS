@@ -2,33 +2,42 @@
 #include "ourstdio.h"
 #include "ourstdlib.h"
 
+// this class is more or less similar to Dr. Gheith's io.h class with expanded functions
+
+// gets a char/byte, this is like outb or U8250::get
 char getc(void) {
     return uart_getc();
 }
 
+// puts a char/byte, this is like inb or U8250::put
 void putc(char c) {
     uart_putc(c);
 }
 
-void puts(const char * str) {
-    int i;
-    for (i = 0; str[i] != '\0'; i ++)
-        putc(str[i]);
-}
-
-void gets(char * buf, int buflen) {
-    int i;
+// like outl in gheithOS
+void gets(char *buf, int len) {
     char c;
+    int i;
     // Leave a spot for null char in buffer
-    for (i = 0; (c = getc()) != '\r' && buflen > 1; i++, buflen--) {
+    for (i = 0; (c = getc() != '\r') && len > 1; i++, len--) {
         putc(c);
         buf[i] = c;
     }
 
-    putc('\n');
-    if (c == '\n') {
+    putc('\n'); 
+
+    // null terminator
+    if (c == '\n') 
         buf[i] = '\0';
-    }
     else
-        buf[buflen-1] = '\0';
+        buf[len-1] = '\0';
+}
+
+// like inl in gheithOS
+void puts(const char *str) {
+    int i = 0;
+    while (str[i] != '\0') {
+        putc(str[i]);
+        i++;
+    }
 }

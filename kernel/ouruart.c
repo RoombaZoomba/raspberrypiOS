@@ -3,6 +3,12 @@
 #include "ouruart.h"
 #include "ourstdlib.h"
 
+/*
+    The UART (Universal Asynchronous Receiver/Transmitter) is something that 
+    allows communication between devices. It's because of this that we are able to 
+    print on the console. Most of the code presented comes from OSdev
+*/
+
 // Memory-Mapped I/O output
 void mmio_write(uint32_t reg, uint32_t data)
 {

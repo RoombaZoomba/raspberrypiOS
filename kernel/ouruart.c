@@ -7,8 +7,7 @@
     The UART (Universal Asynchronous Receiver/Transmitter) is something that 
     allows communication between devices. It's because of this that we are able to 
     print on the console. Most of the code presented comes from OSdev
-    
-    Worked by Nathan Cheng
+   
 */
 
 // Memory-Mapped I/O output

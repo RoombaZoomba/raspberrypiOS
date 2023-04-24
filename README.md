@@ -12,7 +12,7 @@ The set up:
 
 
 If you have added anything to your project since your presentation, please describe what it was and point out the additions in your codebase.
-We were able to finish up and furnish spinlock, develop heap/malloc, 
+We were able to finish up and furnish spinlock, develop heap/malloc, and finish parts of stdio, stdlib, and uart.
 
 
 

@@ -1,14 +1,22 @@
 # raspberrypiOS
 
-Final Project - Building a Raspberry Pi on OS - By Ben, Carl, Fernando, Nathan
+Final Project - Booting a small OS to a Raspberry Pi - By Ben, Carl, Fernando, Nathan
 
-The set up:
-    We thought of simply translating gheith's code(from X86-32 to Arm 32). However we realized just translating gheith's code isn't enough. In the process of looking at arm 64 and gheith's code, we realized that gheith's code was too 86 specific. Because of this, we could not simply translate his base code to start up to simply start up the OS. We needed a starting plate and OS dev was able to provide alot of the mbr, linker, and essential parts such as the UART. This required us to study and understand what the mbr, the linker, and essential parts do.  We were able to gather the code, put it together, and expand on the OS using parts of gheith's code. 
-    We had alot of trouble setting up the environment at the beginning. For we example wanted to use DAS U-Boot but that proved too difficult to implement. Now originally, we were going to use a Raspiberry Pi. We acquired a Raspiberry Pi 4 from Chatterjee. However, we needed QEMU to emulate and debug/test our code. When we got QEMU, QEMU only supported Raspiberry Pi's up to 2b and because of some substantial differences between 4 and 2b, we decided to stick to 2b and QEMU due to the sake of time and effort. We also had to use a cross compiler since the code we were running on was X86 and we were compiling for arm. Setting all of these proved to be challenging task.
-    After we were able to get into kernel main, we were able to implement several things from OS and gheith's code. For one, we developed the atomic class, spinlock, heap/malloc, and implemented stdio, stdlib, and uart together using from gheith's code, OS dev, and geeks for geeks.
-    
-    
 
+    We originally believed we only needed to translate Dr. Gheith's assembly from x86-32 to Arm64. However, the process proved to be much more intricate and involved. By exploring Dr. Gheith's code and with some pointers from Esther, we realized much of the OS was x86 dependent - requiring us to do much more than simply translating assembly. Any attempt at adapting the existing OS to work on ARM architecture would basically result in a new OS (or not, Ship of Theseus paradox?), so instead we decided to start from the ground up and create a barebones operating system with the goal of booting and implementing some base functionality, such as multicore processing, atomic operations, spinlocks, and critical sections, with inspiration from Dr. Gheith's OS. We needed a starting plate and by referencing OSdev we were able to build the bootstrapper, linker, and other essentials like UART. We studied and researched the bootstrapping process, linker, ARM operations and architecture as well as essentials like creating our own Makefiles and using a cross compiler.
+    
+    We ran into many issues setting up the development environment. As we simply weren't just extending the functionality of an existing OS, it wasn't just writing some more C++ code like most other groups. 
+    For example: 
+    - Do we develop on our own machines or on the lab machines? Most of us have M1 Macs which run on ARM architecture, but we don't know how to setup QEMU          on MacOS. We don't have sudo permissions on lab machines, so how would we configure QEMU to emulate a Raspberry Pi?
+    - How do we even configure QEMU to emulate a Raspberry Pi, and how do we "run" it?
+    - Should we instead use a Linux VM on our personal machines and install QEMU from there? (This caused MANY issues we were unable to resolve)
+    - Do we use a bootloader like DAS U-Boot or write a bootstrapping file ourselves? And how much of the process does DAS U-Boot take care of?
+    
+    We ended up developing on a Windows machine dual booting Linux and using QEMU to emulate the Raspberry Pi hardware. However, QEMU only supported up to 
+Raspberry Pi 2b which used ARM32 architecture, meaning the environment we develop and test on (QEMU) and the environment we run on (Raspberry Pi 4) would be on different architectures, so for the sake of time and effort we stuck to the 2b and QEMU. We wanted to use DAS U-Boot, but again ran into a multitude of issues trying to download and configure it, costing us many braincells in the process. So with the help of OSDev we actually made the bootstrapping file.
+
+    Once we got the OS to boot and enter kernelMain, we were able to get the Atomic class, spinlocks, stdio, stdlib and UART working with help from Dr. Gheith's code, OSdev, and geeksforgeeks. We also translated parts of machine.S into ARM64 and set up heap.
+        
 
 
 If you have added anything to your project since your presentation, please describe what it was and point out the additions in your codebase.

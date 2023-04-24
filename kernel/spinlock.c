@@ -4,6 +4,7 @@
 /*
     We are using gcc's atomic operations
     to implement our spinlock
+    Worked by Nathan Cheng
 */
 
 void spinlock_init(spinlock_t *lock) {

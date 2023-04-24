@@ -3,6 +3,10 @@
 
 #ifndef UART_H
 #define UART_H
+/*
+Alot of the code is modeled from OS Dev. Worked by Nathan Cheng
+
+*/
 
 typedef union uart_flags {
     struct {

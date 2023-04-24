@@ -28,4 +28,6 @@ We were able to finish up and furnish spinlock, develop heap/malloc, and finish 
 
 Resources compiled and used:
 https://wiki.osdev.org/Raspberry_Pi_Bare_Bones
+https://developer.arm.com/downloads/-/gnu-rm
+
 

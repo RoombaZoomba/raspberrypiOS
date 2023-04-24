@@ -20,4 +20,4 @@ We were able to finish up and furnish spinlock, develop heap/malloc, and finish 
 
 Resources compiled and used:
 https://wiki.osdev.org/Raspberry_Pi_Bare_Bones
-mbr.S and script.ld is pretty much just taken from OSDev
+

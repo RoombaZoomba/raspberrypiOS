@@ -1,7 +1,4 @@
 
-# Make file made by Nathan Cheng
-# Some of the commands were structured from OS dev.
-
 run:
 	qemu-system-arm -m 1024 -M raspi2b -serial stdio -kernel myos.elf
 

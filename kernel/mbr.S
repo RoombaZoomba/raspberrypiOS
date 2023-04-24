@@ -15,6 +15,7 @@
 _start:
     // This set of instructions sets 3 of the 4 cores to go to halt.
     // Model 1 only has 1 cpu and does not have this instruction, so don't include it if building for model 1
+    // Removing this ifnde and enddif enables all 4 cores to run.
 #ifndef MODEL_1
     mrc p15, #0, r1, c0, c0, #5
     and r1, r1, #3
